@@ -17,16 +17,20 @@ class Ghc(Linter):
 
     """Provides an interface to ghc."""
 
-    syntax = ''
-    cmd = 'ghc'
-    executable = None
-    regex = r''
-    multiline = False
-    line_col_base = (1, 1)
-    tempfile_suffix = None
-    error_stream = util.STREAM_STDOUT
-    selectors = {}
-    word_re = None
+    syntax = 'haskell'
+    cmd = ('ghc', '-fno-code', '-Wall', '-Wwarn', '-fno-helpful-errors')
+    regex = r'^.+:(?P<line>\d+):(?P<col>\d+):\s+(?P<message>.+)$'
+
+    # Experiencing multi-line errors
+    multiline = True
+
+    # No stdin
+    tempfile_suffix = 'hs'
+
+    # ghc writes errors to STDERR
+    error_stream = util.STREAM_STDERR
+
+    # work with some settings
     defaults = {}
     inline_settings = None
     inline_overrides = None
