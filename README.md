@@ -1,7 +1,7 @@
 SublimeLinter-ghc
 =========================
 
-This linter plugin for [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter3) provides an interface to [ghc](http://www.haskell.org/ghc/). It will be used with files that have the “__syntax__” syntax.
+This linter plugin for [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter3) provides an interface to [ghc](http://www.haskell.org/ghc/). It will be used with files that have the “haskell” syntax.
 
 ## Installation
 SublimeLinter 3 must be installed in order to use this plugin. If SublimeLinter 3 is not installed, please follow the instructions [here](https://github.com/SublimeLinter/SublimeLinter.github.io/wiki/Installation).
