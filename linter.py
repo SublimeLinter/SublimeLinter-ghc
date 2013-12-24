@@ -20,8 +20,6 @@ class Ghc(Linter):
     syntax = 'haskell'
     cmd = ('ghc', '-fno-code', '-Wall', '-Wwarn', '-fno-helpful-errors')
     regex = r'^.+:(?P<line>\d+):(?P<col>\d+):\s+(?P<warning>Warning:\s+)?(?P<message>.+)$'
-
-    # Experiencing multi-line errors
     multiline = True
 
     # No stdin
@@ -30,7 +28,7 @@ class Ghc(Linter):
     # ghc writes errors to STDERR
     error_stream = util.STREAM_STDERR
 
-    # work with some settings
+    # @todo allow some settings
     defaults = {}
     inline_settings = None
     inline_overrides = None
