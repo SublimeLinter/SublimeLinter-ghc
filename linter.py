@@ -17,7 +17,7 @@ class Ghc(Linter):
 
     """Provides an interface to ghc."""
 
-    syntax = 'haskell'
+    syntax = ('haskell', 'literate haskell', 'haskell-sublimehaskell)
     cmd = ('ghc', '-fno-code', '-Wall', '-Wwarn', '-fno-helpful-errors')
     regex = r'^.+:(?P<line>\d+):(?P<col>\d+):\s+(?P<warning>Warning:\s+)?(?P<message>.+)$'
     multiline = True
