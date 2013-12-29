@@ -26,7 +26,8 @@ class Ghc(Linter):
     tempfile_suffix = {
         'haskell': 'hs',
         'haskell-sublimehaskell': 'hs',
-        'literate haskell': 'lhs'}
+        'literate haskell': 'lhs'
+    }
 
     # ghc writes errors to STDERR
     error_stream = util.STREAM_STDERR
