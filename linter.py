@@ -28,7 +28,6 @@ class Ghc(Linter):
     # ghc writes errors to STDERR
     error_stream = util.STREAM_STDERR
 
-    # @todo allow some settings
     defaults = {}
     inline_settings = None
     inline_overrides = None
