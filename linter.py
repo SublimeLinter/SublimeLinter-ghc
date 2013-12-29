@@ -17,13 +17,16 @@ class Ghc(Linter):
 
     """Provides an interface to ghc."""
 
-    syntax = ('haskell', 'haskell-sublimehaskell')
+    syntax = ('haskell', 'haskell-sublimehaskell', 'literate haskell')
     cmd = ('ghc', '-fno-code', '-Wall', '-Wwarn', '-fno-helpful-errors')
     regex = r'^.+:(?P<line>\d+):(?P<col>\d+):\s+(?P<warning>Warning:\s+)?(?P<message>.+)$'
     multiline = True
 
     # No stdin
-    tempfile_suffix = 'hs'
+    tempfile_suffix = {
+        'haskell': 'hs',
+        'haskell-sublimehaskell': 'hs',
+        'literate haskell': 'lhs'}
 
     # ghc writes errors to STDERR
     error_stream = util.STREAM_STDERR
