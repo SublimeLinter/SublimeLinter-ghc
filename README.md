@@ -1,7 +1,7 @@
 SublimeLinter-ghc
 =========================
 
-[![Build Status](https://khancdn.eu/badges.php?service=https%3A%2F%2Ftravis-ci.org%2FSublimeLinter%2FSublimeLinter-ghc.png%3Fbranch%3Dmaster)](https://travis-ci.org/SublimeLinter/SublimeLinter-ghc)
+[![Build Status](https://travis-ci.org/SublimeLinter/SublimeLinter-ghc.svg?branch=master)](https://travis-ci.org/SublimeLinter/SublimeLinter-ghc)
 
 This linter plugin for [SublimeLinter](http://sublimelinter.readthedocs.org) provides an interface to [ghc](http://www.haskell.org/ghc/). It will be used with files that have the “Haskell” syntax.
 
