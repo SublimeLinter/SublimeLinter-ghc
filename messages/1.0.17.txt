@@ -1,0 +1,4 @@
+SublimeLinter-ghc
+-------------------------------
+Fixes a problem where errors from *imported*
+files were reported in the *linted* file.
