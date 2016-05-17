@@ -15,7 +15,6 @@ from os.path import basename
 
 
 class Ghc(Linter):
-
     """Provides an interface to ghc."""
 
     syntax = ('haskell', 'haskell-sublimehaskell', 'literate haskell')
