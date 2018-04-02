@@ -3,7 +3,8 @@ SublimeLinter-ghc
 
 [![Build Status](https://travis-ci.org/SublimeLinter/SublimeLinter-ghc.svg?branch=master)](https://travis-ci.org/SublimeLinter/SublimeLinter-ghc)
 
-This linter plugin for [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter) provides an interface to [ghc](http://www.haskell.org/ghc/). It will be used with files that have the “Haskell” syntax.
+This linter plugin for [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter) provides an interface to [ghc](http://www.haskell.org/ghc/).
+It will be used with files that have the "Haskell" syntax.
 
 ## Installation
 
@@ -15,7 +16,8 @@ To install `ghc`, you can install [haskell-platform](http://www.haskell.org/plat
 
 `haskell-platform` is available on many package managers, for example `brew update; brew install haskell-platform` on Mac OS X.
 
-In order for `ghc` to be executed by SublimeLinter, you must ensure that its path is available to SublimeLinter. The docs cover [troubleshooting PATH configuration](http://sublimelinter.com/en/latest/troubleshooting.html#finding-a-linter-executable).
+Please make sure that the path to `ghc` is available to SublimeLinter.
+The docs cover [troubleshooting PATH configuration](http://sublimelinter.com/en/latest/troubleshooting.html#finding-a-linter-executable).
 
 ## Settings
 
