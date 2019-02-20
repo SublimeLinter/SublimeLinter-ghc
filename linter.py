@@ -6,9 +6,11 @@ class Ghc(Linter):
     cmd = ('ghc', '-fno-code', '-Wall', '-Wwarn', '-fno-helpful-errors',
            '$temp_file')
     regex = (
-        r'^(?P<filename>.+):'
-        r'(?P<line>\d+):(?P<col>\d+):'
-        r'\s+(?P<warning>Warning:\s+)?(?P<message>.+)$'
+        r'\s*(?P<filename>.+):'
+        r'\s*(?P<line>\d+):(?P<col>\d+):'
+        r'\s*(?:(?P<warning>[Ww]arning):|(?P<error>[Ee]rror):)?'
+        r'\s*(?P<flag>\[-W[^\]]*\])?'
+        r'\s*(?P<message>.+?):?$'
     )
     multiline = True
     defaults = {
@@ -41,5 +43,8 @@ class Ghc(Linter):
 
         if match_filename != linted_filename:
             return None, None, None, None, None, '', None
+
+        if match.groupdict()['flag']:
+            message += " " + match.groupdict()['flag']
 
         return match, line, col, error, warning, message, near
