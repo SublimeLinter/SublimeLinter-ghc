@@ -3,7 +3,8 @@ from os.path import basename
 
 
 class Ghc(Linter):
-    cmd = ('ghc', '-fno-code', '-Wall', '-Wwarn', '-fno-helpful-errors')
+    cmd = ('ghc', '-fno-code', '-Wall', '-Wwarn', '-fno-helpful-errors',
+           '$temp_file')
     regex = (
         r'^(?P<filename>.+):'
         r'(?P<line>\d+):(?P<col>\d+):'
