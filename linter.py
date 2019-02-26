@@ -3,11 +3,14 @@ from os.path import basename
 
 
 class Ghc(Linter):
-    cmd = ('ghc', '-fno-code', '-Wall', '-Wwarn', '-fno-helpful-errors')
+    cmd = ('ghc', '-fno-code', '-Wall', '-Wwarn', '-fno-helpful-errors',
+           '$temp_file')
     regex = (
-        r'^(?P<filename>.+):'
-        r'(?P<line>\d+):(?P<col>\d+):'
-        r'\s+(?P<warning>Warning:\s+)?(?P<message>.+)$'
+        r'\s*(?P<filename>.+):'
+        r'\s*(?P<line>\d+):(?P<col>\d+):'
+        r'\s*(?:(?P<warning>[Ww]arning):|(?P<error>[Ee]rror):)?'
+        r'\s*(?P<flag>\[-W[^\]]*\])?'
+        r'\s*(?P<message>.+?):?$'
     )
     multiline = True
     defaults = {
@@ -24,6 +27,11 @@ class Ghc(Linter):
     # ghc writes errors to STDERR
     error_stream = util.STREAM_STDERR
 
+    def finalize_cmd(self, cmd, context, **kwargs):
+        """Override to capture temporary filename."""
+        self.temp_file = context['temp_file']
+        return super().finalize_cmd(cmd, context, **kwargs)
+
     def split_match(self, match):
         """Override to ignore errors reported in imported files."""
         match, line, col, error, warning, message, near = (
@@ -31,9 +39,12 @@ class Ghc(Linter):
         )
 
         match_filename = basename(match.groupdict()['filename'])
-        linted_filename = basename(self.filename)
+        linted_filename = basename(self.temp_file)
 
         if match_filename != linted_filename:
             return None, None, None, None, None, '', None
+
+        if match.groupdict()['flag']:
+            message += " " + match.groupdict()['flag']
 
         return match, line, col, error, warning, message, near
