@@ -1,5 +1,4 @@
 from SublimeLinter.lint import Linter, util
-from os.path import basename
 
 
 class Ghc(Linter):
@@ -30,12 +29,6 @@ class Ghc(Linter):
     def split_match(self, match):
         """Override to ignore errors reported in imported files."""
         error = super().split_match(match)
-
-        match_filename = basename(error['filename'])
-        linted_filename = basename(self.context['temp_file'])
-        if match_filename != linted_filename:
-            return None
-
         if error['flag']:
             error['message'] += " " + error['flag']
         return error
