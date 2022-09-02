@@ -17,11 +17,11 @@ class Ghc(Linter):
         'selector': 'source.haskell, text.tex.latex.haskell'
     }
 
-    # No stdin
     tempfile_suffix = {
         'haskell': 'hs',
         'haskell-sublimehaskell': 'hs',
-        'literate haskell': 'lhs'
+        'literate haskell': 'lhs',
+        'literatehaskellbirdstyle': 'lhs'
     }
 
     # ghc writes errors to STDERR
