@@ -29,17 +29,13 @@ class Ghc(Linter):
 
     def split_match(self, match):
         """Override to ignore errors reported in imported files."""
-        match, line, col, error, warning, message, near = (
-            super().split_match(match)
-        )
+        error = super().split_match(match)
 
-        match_filename = basename(match.groupdict()['filename'])
-        linted_filename = basename(self.context.get('temp_file'))
-
+        match_filename = basename(error['filename'])
+        linted_filename = basename(self.context['temp_file'])
         if match_filename != linted_filename:
-            return None, None, None, None, None, '', None
+            return None
 
-        if match.groupdict()['flag']:
-            message += " " + match.groupdict()['flag']
-
-        return match, line, col, error, warning, message, near
+        if error['flag']:
+            error['message'] += " " + error['flag']
+        return error
