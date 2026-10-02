@@ -16,6 +16,8 @@ To install `ghc`, you can install [haskell-platform](http://www.haskell.org/plat
 
 `haskell-platform` is available on many package managers, for example `brew update; brew install haskell-platform` on Mac OS X.
 
+This linter reads the diagnostics that `ghc` prints with `-fdiagnostics-as-json`, so it needs **GHC 9.10 or newer**. With an older `ghc` the linter only logs `ghc: unrecognised flag: -fdiagnostics-as-json` in the console; use an older release of this linter there.
+
 Please make sure that the path to `ghc` is available to SublimeLinter.
 The docs cover [troubleshooting PATH configuration](http://sublimelinter.com/en/latest/troubleshooting.html#finding-a-linter-executable).
 
