@@ -95,8 +95,8 @@ class Ghc(Linter):
         )
 
     def convert_column(self, line, col, m, vv):
-        # ghc counts characters, except that a tab advances the column to the
-        # next multiple of `TAB_STOP`. Translate that back to a character index.
+        # GHC source columns count characters, with tabs advancing to the
+        # next multiple of `TAB_STOP`. Translate back to a character index.
         text = vv.select_line(line)
         visual = 0
         for index, char in enumerate(text):
